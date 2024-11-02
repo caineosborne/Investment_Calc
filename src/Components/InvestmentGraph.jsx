@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, Label } from 'recharts';
-import { Box } from '@mui/material';
+import { Box, useTheme, useMediaQuery } from '@mui/material';
 
 const InvestmentGraph = ({ data, isCoastingEnabled, coastingStartYear, goalReachedYear }) => {
     const formatCurrency = (value) => {
@@ -49,35 +49,43 @@ const InvestmentGraph = ({ data, isCoastingEnabled, coastingStartYear, goalReach
         year.yearEndBalance <= 0 || year.yearEndBalanceLow <= 0 || year.yearEndBalanceVeryLow <= 0
     );
 
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
     return (
         <Box sx={{ height: '100%', width: '100%', pb: 4 }}>
             <ResponsiveContainer width="100%" height={500}>
                 <ComposedChart
                     data={data}
-                    margin={{ top: 20, right: 65, left: 65, bottom: 45 }}
+                    margin={{
+                        top: 20,
+                        right: isMobile ? 20 : 65,
+                        left: isMobile ? 20 : 65,
+                        bottom: 45
+                    }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis
                         dataKey="age"
                         interval={4}
-                        label={{
+                        label={!isMobile ? {
                             value: 'Age',
                             position: 'bottom',
                             offset: 0
-                        }}
+                        } : {}}
                     />
                     <YAxis
                         yAxisId="left"
                         orientation="left"
                         stroke="#82ca9d"
                         tickFormatter={formatAxisTick}
-                        label={{
+                        label={!isMobile ? {
                             value: 'Portfolio Value',
                             angle: -90,
                             position: 'insideLeft',
                             offset: -50,
                             style: { textAnchor: 'middle' }
-                        }}
+                        } : {}}
                         tickCount={8}
                     />
                     <YAxis
@@ -86,15 +94,16 @@ const InvestmentGraph = ({ data, isCoastingEnabled, coastingStartYear, goalReach
                         stroke="#8884d8"
                         domain={[0, maxValue]}
                         tickFormatter={formatAxisTick}
-                        label={{
+                        label={!isMobile ? {
                             value: 'Investment/Spending',
                             angle: 90,
                             position: 'insideRight',
                             offset: -40,
                             style: { textAnchor: 'middle' }
-                        }}
+                        } : {}}
                         tickCount={8}
                     />
+                    {/* Rest of the code remains the same */}
                     <Tooltip content={<CustomTooltip />} />
                     <Legend
                         verticalAlign="bottom"
