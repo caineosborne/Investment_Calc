@@ -70,33 +70,33 @@ const ResultsTable = ({ calculationResults, showInvestmentDetails, showInflation
                 Copy Results to Clipboard (CSV)
             </CopyButton>
             <StyledTableContainer component={Paper}>
-                <StyledTable size="small">
+                <StyledTable stickyHeader size="small">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Year</TableCell>
-                            <TableCell>Age</TableCell>
-                            <TableCell>Status</TableCell>
+                            <TableCell align="center">Year</TableCell>
+                            <TableCell align="center">Age</TableCell>
+                            <TableCell align="center">Status</TableCell>
                             {showInvestmentDetails && investments.map((inv) => (
-                                <TableCell key={inv.id}>{inv.name}</TableCell>
+                                <TableCell align="center" key={inv.id}>{inv.name}</TableCell>
                             ))}
-                            <TableCell>Opening Balance</TableCell>
-                            <TableCell>Yearly Spend</TableCell>
-                            <TableCell>Amount Invested</TableCell>
-                            <TableCell>Pension Amount</TableCell>
-                            <TableCell>Year End Balance</TableCell>
+                            <TableCell align="center">Opening Balance</TableCell>
+                            <TableCell align="center">Yearly Spend <br /> (after pension) </TableCell>
+                            <TableCell align="center">Amount Invested</TableCell>
+                            <TableCell align="center">Pension Amount</TableCell>
+                            <TableCell align="center">Year End Balance</TableCell>
                             {showLowerReturnScenarios && (
                                 <>
-                                    <TableCell>Year End Balance (10% Lower)</TableCell>
-                                    <TableCell>Year End Balance (20% Lower)</TableCell>
+                                    <TableCell align="center">Year End Balance (10% Lower)</TableCell>
+                                    <TableCell align="center">Year End Balance<br />(20% Lower)</TableCell>
                                 </>
                             )}
                             {showInflationAdjusted && (
                                 <>
-                                    <TableCell>Inflation Adjusted Total</TableCell>
+                                    <TableCell align="center">Inflation Adjusted Total</TableCell>
                                     {showLowerReturnScenarios && (
                                         <>
-                                            <TableCell>Inflation Adjusted (10% Lower)</TableCell>
-                                            <TableCell>Inflation Adjusted (20% Lower)</TableCell>
+                                            <TableCell align="center">Inflation Adjusted (10% Lower)</TableCell>
+                                            <TableCell align="center">Inflation Adjusted<br />(20% Lower)</TableCell>
                                         </>
                                     )}
                                 </>
@@ -116,30 +116,30 @@ const ResultsTable = ({ calculationResults, showInvestmentDetails, showInflation
                                     },
                                 }}
                             >
-                                <TableCell>{row.year}</TableCell>
-                                <TableCell>{row.age}</TableCell>
-                                <TableCell>{row.status}</TableCell>
+                                <TableCell align="center">{row.year}</TableCell>
+                                <TableCell align="center">{row.age}</TableCell>
+                                <TableCell align="center">{row.status}</TableCell>
                                 {showInvestmentDetails && investments.map((inv) => (
-                                    <TableCell key={inv.id}>{formatCurrency(row.investments[inv.id])}</TableCell>
+                                    <TableCell align="center" key={inv.id}>{formatCurrency(row.investments[inv.id])}</TableCell>
                                 ))}
-                                <TableCell>{formatCurrency(row.openingBalance)}</TableCell>
-                                <TableCell>{row.yearlySpend ? formatCurrency(row.yearlySpend) : '-'}</TableCell>
-                                <TableCell>{formatCurrency(row.investmentAmount)}</TableCell>
-                                <TableCell>{formatCurrency(row.pensionAmount)}</TableCell>
-                                <TableCell>{formatCurrency(row.yearEndBalance)}</TableCell>
+                                <TableCell align="center">{formatCurrency(row.openingBalance)}</TableCell>
+                                <TableCell align="center">{row.yearlySpend ? formatCurrency(row.yearlySpend) : '-'}</TableCell>
+                                <TableCell align="center">{formatCurrency(row.investmentAmount)}</TableCell>
+                                <TableCell align="center">{formatCurrency(row.pensionAmount)}</TableCell>
+                                <TableCell align="center">{formatCurrency(row.yearEndBalance)}</TableCell>
                                 {showLowerReturnScenarios && (
                                     <>
-                                        <TableCell>{formatCurrency(row.yearEndBalanceLow)}</TableCell>
-                                        <TableCell>{formatCurrency(row.yearEndBalanceVeryLow)}</TableCell>
+                                        <TableCell align="center">{formatCurrency(row.yearEndBalanceLow)}</TableCell>
+                                        <TableCell align="center">{formatCurrency(row.yearEndBalanceVeryLow)}</TableCell>
                                     </>
                                 )}
                                 {showInflationAdjusted && (
                                     <>
-                                        <TableCell>{formatCurrency(row.inflationAdjustedTotal)}</TableCell>
+                                        <TableCell align="center">{formatCurrency(row.inflationAdjustedTotal)}</TableCell>
                                         {showLowerReturnScenarios && (
                                             <>
-                                                <TableCell>{formatCurrency(row.inflationAdjustedTotalLow)}</TableCell>
-                                                <TableCell>{formatCurrency(row.inflationAdjustedTotalVeryLow)}</TableCell>
+                                                <TableCell align="center">{formatCurrency(row.inflationAdjustedTotalLow)}</TableCell>
+                                                <TableCell align="center">{formatCurrency(row.inflationAdjustedTotalVeryLow)}</TableCell>
                                             </>
                                         )}
                                     </>

@@ -193,7 +193,8 @@ const InvestmentCalculator = () => {
 
                 if (goalReached) {
                     currentYear.yearlySpend = monthlyRetirementSpend * 12 * inflationFactor;
-                    currentYear.yearlySpend = Math.max(0, currentYear.yearlySpend - currentYear.pensionAmount);
+                    // currentYear.yearlySpend = Math.max(0, currentYear.yearlySpend - currentYear.pensionAmount);
+                    currentYear.yearlySpend = currentYear.yearlySpend - currentYear.pensionAmount;
 
                     let remainingSpend = currentYear.yearlySpend;
                     for (let i = 0; i < investmentsCopy.length && remainingSpend > 0; i++) {
@@ -434,7 +435,7 @@ const InvestmentCalculator = () => {
                         color: 'text.secondary'
                     }}
                 >
-                    Version 0.05 2/11/24
+                    Version 0.07 2/11/24
                 </Typography>
             </Container>
         </>
