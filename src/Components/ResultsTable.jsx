@@ -30,7 +30,7 @@ const ResultsTable = ({ calculationResults, showInvestmentDetails, showInflation
         const headers = [
             'Year', 'Age', 'Status',
             ...(showInvestmentDetails ? investments.map(inv => inv.name) : []),
-            'Opening Balance', 'Yearly Spend', 'Investment Amount', 'Year End Balance',
+            'Opening Balance', 'Yearly Spend', 'Amount Invested', 'Year End Balance',
             ...(showLowerReturnScenarios ? ['Year End Balance (10% Lower)', 'Year End Balance (20% Lower)'] : []),
             ...(showInflationAdjusted ? ['Inflation Adjusted Total'] : []),
             ...(showInflationAdjusted && showLowerReturnScenarios ? ['Inflation Adjusted (10% Lower)', 'Inflation Adjusted (20% Lower)'] : [])
@@ -81,7 +81,7 @@ const ResultsTable = ({ calculationResults, showInvestmentDetails, showInflation
                             ))}
                             <TableCell>Opening Balance</TableCell>
                             <TableCell>Yearly Spend</TableCell>
-                            <TableCell>Investment Amount</TableCell>
+                            <TableCell>Amount Invested</TableCell>
                             <TableCell>Pension Amount</TableCell>
                             <TableCell>Year End Balance</TableCell>
                             {showLowerReturnScenarios && (
