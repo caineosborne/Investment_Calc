@@ -136,7 +136,7 @@ const InvestmentGraph = ({ data, isCoastingEnabled, coastingStartYear, goalReach
                         dataKey="yearEndBalance"
                         stroke="#82ca9d"
                         strokeWidth={4}
-                        name="Expected Returns"
+                        name="Total @ Expected"
                     />
                     <Line
                         yAxisId="left"
@@ -144,7 +144,7 @@ const InvestmentGraph = ({ data, isCoastingEnabled, coastingStartYear, goalReach
                         dataKey="yearEndBalanceLow"
                         stroke="#ffc658"
                         strokeWidth={3}
-                        name="10% Lower Returns"
+                        name="Total @ 10% Lower"
                     />
                     <Line
                         yAxisId="left"
@@ -152,7 +152,7 @@ const InvestmentGraph = ({ data, isCoastingEnabled, coastingStartYear, goalReach
                         dataKey="yearEndBalanceVeryLow"
                         stroke="#ff7300"
                         strokeWidth={3}
-                        name="20% Lower Returns"
+                        name="Total @ 20% Lower"
                     />
                     {riskyScenariosPresent && (
                         <rect x="0" y="0" width="100%" height="100%" fill="rgba(255,0,0,0.1)" />

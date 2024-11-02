@@ -434,7 +434,7 @@ const InvestmentCalculator = () => {
                         color: 'text.secondary'
                     }}
                 >
-                    Version 0.04 2/11/24
+                    Version 0.05 2/11/24
                 </Typography>
             </Container>
         </>

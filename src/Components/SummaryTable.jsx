@@ -58,7 +58,7 @@ const SummaryTable = ({ calculationResults }) => {
         return lastPositiveYear ? lastPositiveYear.age : 'N/A';
     };
 
-    const retirementAge = currentAge + goalReachedYear - 1;
+    const retirementAge = currentAge + goalReachedYear;
     const workingPhase = returns.slice(0, goalReachedYear);
     const retirementPhase = returns.slice(goalReachedYear);
 
