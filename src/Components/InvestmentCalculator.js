@@ -278,151 +278,168 @@ const InvestmentCalculator = () => {
 
 
     return (
-        <Container sx={layoutStyles.mainContainer}>
-            {/* Header Section */}
-            <Box sx={layoutStyles.headerSection}>
-                <Typography variant="h4" sx={layoutStyles.title}>
-                    Investment Calculator
-                </Typography>
-            </Box>
+        <>
 
-            {/* Input Form Section */}
-            <Box sx={layoutStyles.inputSection}>
-                <InputForm
-                    investments={investments}
-                    setInvestments={setInvestments}
-                    retirementGoal={retirementGoal}
-                    setRetirementGoal={setRetirementGoal}
-                    retirementAge={retirementAge}
-                    setRetirementAge={setRetirementAge}
-                    useAgeForRetirement={useAgeForRetirement}
-                    setUseAgeForRetirement={setUseAgeForRetirement}
-                    inflationRate={inflationRate}
-                    setInflationRate={setInflationRate}
-                    monthlyRetirementSpend={monthlyRetirementSpend}
-                    setMonthlyRetirementSpend={setMonthlyRetirementSpend}
-                    currentAge={currentAge}
-                    setCurrentAge={setCurrentAge}
-                    isCoastingEnabled={isCoastingEnabled}
-                    setIsCoastingEnabled={setIsCoastingEnabled}
-                    coastingYears={coastingYears}
-                    setCoastingYears={setCoastingYears}
-                    monthlyPensionAmount={monthlyPensionAmount}
-                    setMonthlyPensionAmount={setMonthlyPensionAmount}
-                    pensionStartAge={pensionStartAge}
-                    setPensionStartAge={setPensionStartAge}
-                />
-            </Box>
-
-            {/* /* Main Content Section */}
-            {isCalculating ? (
-                <Box sx={layoutStyles.loadingContainer}>
-                    <CircularProgress />
+            <Container sx={layoutStyles.mainContainer}>
+                {/* Header Section */}
+                <Box sx={layoutStyles.headerSection}>
+                    <Typography variant="h4" sx={layoutStyles.title}>
+                        Retirement Calculator
+                    </Typography>
                 </Box>
-            ) : showSummary && (
-                <Box sx={{ ...layoutStyles.resultsSection, pb: 3 }}>
-                    {/* Summary and Graph Grid */}
 
-                    <Box sx={layoutStyles.summaryGraphContainer}>
-                        {/* Summary Card */}
-                        <Box sx={layoutStyles.contentCard}>
-                            {calculationResults && (
-                                <Box sx={{ height: '100%', p: { xs: 1, sm: 2 } }}>
-                                    <SummaryTable calculationResults={calculationResults} />
-                                </Box>
-                            )}
-                        </Box>
-
-                        {/* Graph Card */}
-                        <Box sx={layoutStyles.contentCard}>
-                            {calculationResults && (
-                                <Box sx={{ height: '100%', p: { xs: 1, sm: 2 } }}>
-                                    <InvestmentGraph
-                                        data={calculationResults.returns}
-                                        isCoastingEnabled={isCoastingEnabled}
-                                        coastingStartYear={coastingYears + currentAge}
-                                        goalReachedYear={calculationResults.goalReachedYear + currentAge - 1}
-                                    />
-                                </Box>
-                            )}
-                        </Box>
-                    </Box>
-                </Box>)}
-
-            {/* Controls Section */}
-            <Box sx={layoutStyles.controlsSection}>
-                {/* Results Table Toggle */}
-                <FormControlLabel
-                    control={
-                        <Switch
-                            checked={showResultsTable}
-                            onChange={(e) => setShowResultsTable(e.target.checked)}
-                        />
-                    }
-                    label="Show Results Table"
-                />
-                {/* Show Summary  */}
-                <FormControlLabel
-                    control={
-                        <Switch
-                            checked={showSummary}
-                            onChange={(e) => setShowSummary(e.target.checked)}
-                        />
-                    }
-                    label="Show Summary"
-                />
-
-
-
-                {/* Additional Controls (Only shown when Results Table is visible) */}
-                {showResultsTable && (
-                    <>
-                        <FormControlLabel
-                            control={
-                                <Switch
-                                    checked={showInvestmentDetails}
-                                    onChange={(e) => setShowInvestmentDetails(e.target.checked)}
-                                />
-                            }
-                            label="Show Investment Details"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Switch
-                                    checked={showInflationAdjusted}
-                                    onChange={(e) => setShowInflationAdjusted(e.target.checked)}
-                                />
-                            }
-                            label="Show Inflation Adjusted Total"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Switch
-                                    checked={showLowerReturnScenarios}
-                                    onChange={(e) => setShowLowerReturnScenarios(e.target.checked)}
-                                />
-                            }
-                            label="Show Lower Return Scenarios"
-                        />
-                    </>
-                )}
-            </Box>
-
-            {/* Results Table Section */}
-            {showResultsTable && calculationResults && (
-                <Box sx={layoutStyles.resultsTableSection}>
-                    <ResultsTable
-                        calculationResults={calculationResults}
-                        showInvestmentDetails={showInvestmentDetails}
-                        showInflationAdjusted={showInflationAdjusted}
-                        showLowerReturnScenarios={showLowerReturnScenarios}
+                {/* Input Form Section */}
+                <Box sx={layoutStyles.inputSection}>
+                    <InputForm
+                        investments={investments}
+                        setInvestments={setInvestments}
+                        retirementGoal={retirementGoal}
+                        setRetirementGoal={setRetirementGoal}
+                        retirementAge={retirementAge}
+                        setRetirementAge={setRetirementAge}
+                        useAgeForRetirement={useAgeForRetirement}
+                        setUseAgeForRetirement={setUseAgeForRetirement}
+                        inflationRate={inflationRate}
+                        setInflationRate={setInflationRate}
+                        monthlyRetirementSpend={monthlyRetirementSpend}
+                        setMonthlyRetirementSpend={setMonthlyRetirementSpend}
+                        currentAge={currentAge}
+                        setCurrentAge={setCurrentAge}
+                        isCoastingEnabled={isCoastingEnabled}
+                        setIsCoastingEnabled={setIsCoastingEnabled}
+                        coastingYears={coastingYears}
+                        setCoastingYears={setCoastingYears}
+                        monthlyPensionAmount={monthlyPensionAmount}
+                        setMonthlyPensionAmount={setMonthlyPensionAmount}
+                        pensionStartAge={pensionStartAge}
+                        setPensionStartAge={setPensionStartAge}
                     />
                 </Box>
-            )}
+
+                {/* /* Main Content Section */}
+                {isCalculating ? (
+                    <Box sx={layoutStyles.loadingContainer}>
+                        <CircularProgress />
+                    </Box>
+                ) : showSummary && (
+                    <Box sx={{ ...layoutStyles.resultsSection, pb: 3 }}>
+                        {/* Summary and Graph Grid */}
+
+                        <Box sx={layoutStyles.summaryGraphContainer}>
+                            {/* Summary Card */}
+                            <Box sx={layoutStyles.contentCard}>
+                                {calculationResults && (
+                                    <Box sx={{ height: '100%', p: { xs: 1, sm: 2 } }}>
+                                        <SummaryTable calculationResults={calculationResults} />
+                                    </Box>
+                                )}
+                            </Box>
+
+                            {/* Graph Card */}
+                            <Box sx={layoutStyles.contentCard}>
+                                {calculationResults && (
+                                    <Box sx={{ height: '100%', p: { xs: 1, sm: 2 } }}>
+                                        <InvestmentGraph
+                                            data={calculationResults.returns}
+                                            isCoastingEnabled={isCoastingEnabled}
+                                            coastingStartYear={coastingYears + currentAge}
+                                            goalReachedYear={calculationResults.goalReachedYear + currentAge - 1}
+                                        />
+                                    </Box>
+                                )}
+                            </Box>
+                        </Box>
+                    </Box>)}
+
+                {/* Controls Section */}
+                <Box sx={layoutStyles.controlsSection}>
+                    {/* Results Table Toggle */}
+                    <FormControlLabel
+                        control={
+                            <Switch
+                                checked={showResultsTable}
+                                onChange={(e) => setShowResultsTable(e.target.checked)}
+                            />
+                        }
+                        label="Show Results Table"
+                    />
+                    {/* Show Summary  */}
+                    <FormControlLabel
+                        control={
+                            <Switch
+                                checked={showSummary}
+                                onChange={(e) => setShowSummary(e.target.checked)}
+                            />
+                        }
+                        label="Show Summary"
+                    />
 
 
-        </Container >
+
+                    {/* Additional Controls (Only shown when Results Table is visible) */}
+                    {showResultsTable && (
+                        <>
+                            <FormControlLabel
+                                control={
+                                    <Switch
+                                        checked={showInvestmentDetails}
+                                        onChange={(e) => setShowInvestmentDetails(e.target.checked)}
+                                    />
+                                }
+                                label="Show Investment Details"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Switch
+                                        checked={showInflationAdjusted}
+                                        onChange={(e) => setShowInflationAdjusted(e.target.checked)}
+                                    />
+                                }
+                                label="Show Inflation Adjusted Total"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Switch
+                                        checked={showLowerReturnScenarios}
+                                        onChange={(e) => setShowLowerReturnScenarios(e.target.checked)}
+                                    />
+                                }
+                                label="Show Lower Return Scenarios"
+                            />
+                        </>
+                    )}
+                </Box>
+
+                {/* Results Table Section */}
+                {showResultsTable && calculationResults && (
+                    <Box sx={layoutStyles.resultsTableSection}>
+                        <ResultsTable
+                            calculationResults={calculationResults}
+                            showInvestmentDetails={showInvestmentDetails}
+                            showInflationAdjusted={showInflationAdjusted}
+                            showLowerReturnScenarios={showLowerReturnScenarios}
+                        />
+                    </Box>
+                )}
+
+            </Container>
+
+
+            <Container sx={layoutStyles.mainContainer}>
+                <Typography
+                    variant="body2"
+                    sx={{
+                        textAlign: 'center',
+                        mt: 4,
+                        color: 'text.secondary'
+                    }}
+                >
+                    Version 0.04 2/11/24
+                </Typography>
+            </Container>
+        </>
     );
+
 };
 
 export default InvestmentCalculator;
